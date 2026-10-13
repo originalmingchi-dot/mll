@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#102747">
+<meta name="description" content="링크프라이스 맑은농장 광고운영 제안서">
+<title>맑은농장 광고운영 제안서</title>
+<style>
+:root{--navy:#142b4b;--blue:#2e68c7;--sky:#eaf1fb;--red:#b7192c;--ink:#1c2737;--muted:#667386;--line:#dfe6ef;--paper:#fff;--bg:#e9edf3}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;font-family:Inter,"Pretendard","Noto Sans KR","Malgun Gothic",sans-serif;color:var(--ink)}
+body{background:radial-gradient(ellipse at 50% 0%,#fff 0,#edf1f6 55%,#e3e8ef 100%);overflow:hidden}
+button{font:inherit}
+.topbar{height:62px;padding:0 clamp(16px,4vw,54px);display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #dce3ec;background:#ffffffd9;backdrop-filter:blur(12px);position:relative;z-index:5}
+.brand-mini{display:flex;align-items:center;gap:12px;font-size:12px;color:var(--muted);letter-spacing:.04em}
+.brand-mini img{width:120px;height:auto;display:block}
+.top-right{font-size:12px;color:#64748b}
+.stage{height:calc(100dvh - 122px);display:flex;align-items:center;justify-content:center;padding:18px 22px}
+.book{width:min(1180px,100%);height:min(760px,100%);position:relative;perspective:2200px;filter:drop-shadow(0 20px 40px #1c2e4818)}
+.page{position:absolute;inset:0;background:var(--paper);border:1px solid #e4e9f0;border-radius:4px 14px 14px 4px;overflow:auto;padding:clamp(28px,5vw,66px) clamp(24px,6vw,78px) 66px;transform-origin:left center;backface-visibility:hidden;transition:transform .78s cubic-bezier(.2,.72,.2,1),opacity .35s;opacity:0;pointer-events:none}
+.page.active{opacity:1;pointer-events:auto;transform:rotateY(0deg);z-index:2}
+.page.exit-left{transform:rotateY(-100deg);opacity:0;z-index:1}
+.page.enter-right{transform:rotateY(5deg);opacity:0}
+.page:after{content:"";position:absolute;inset:0 auto 0 0;width:5px;background:linear-gradient(180deg,var(--blue),#a9c6f5 55%,var(--red));opacity:.9}
+.page-head{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-bottom:clamp(24px,4vh,42px)}
+.page-head img{width:clamp(120px,15vw,168px);height:auto;display:block}
+.page-kicker{font-size:11px;font-weight:800;letter-spacing:.15em;color:var(--blue);text-align:right}
+h1,h2,h3,p{margin-top:0}h1{font-size:clamp(32px,4.8vw,62px);line-height:1.17;letter-spacing:-.055em;color:var(--navy);margin-bottom:22px;word-break:keep-all;overflow-wrap:normal}
+h2{font-size:clamp(25px,3vw,39px);line-height:1.25;letter-spacing:-.04em;color:var(--navy);margin-bottom:14px;word-break:keep-all}
+h3{font-size:16px;line-height:1.4;margin-bottom:8px;color:var(--navy);word-break:keep-all}
+p{font-size:clamp(13px,1.35vw,16px);line-height:1.8;color:#526176;margin-bottom:12px;word-break:keep-all;overflow-wrap:break-word}
+.lead{font-size:clamp(16px,1.8vw,21px);line-height:1.75;color:#47566b;max-width:760px;word-break:keep-all}
+.small{font-size:11px;line-height:1.65;color:#7b8797}.muted{color:var(--muted)}
+.rule{width:58px;height:4px;background:var(--red);border-radius:9px;margin:0 0 24px}
+.cover{display:flex;flex-direction:column;justify-content:center;min-height:100%}
+.cover .eyebrow{font-size:12px;font-weight:800;letter-spacing:.16em;color:var(--blue);margin-bottom:22px}
+.cover h1 span{color:var(--red)}
+.cover-meta{display:flex;gap:20px;flex-wrap:wrap;margin-top:34px;font-size:12px;color:#6b7788}
+.cover-graphic{position:absolute;right:8%;bottom:13%;width:27%;height:36%;opacity:.9;pointer-events:none}
+.pill{display:inline-flex;padding:6px 10px;border-radius:999px;background:var(--sky);color:#2458a6;font-size:11px;font-weight:750;white-space:nowrap}
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:22px 0}
+.card{border:1px solid var(--line);border-radius:12px;padding:18px;background:#fff;min-width:0}
+.card .num{font-size:25px;font-weight:800;color:var(--blue);letter-spacing:-.04em;margin:7px 0}
+.card p{font-size:12px;line-height:1.65;margin:0}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:20px 0}
+.panel{border:1px solid var(--line);border-radius:12px;padding:20px;min-width:0}
+.panel.blue{background:#f4f7fc;border-color:#e5edf9}
+.panel p{font-size:13px}
+table{width:100%;border-collapse:collapse;margin:16px 0 12px;font-size:clamp(11px,1.05vw,13px);font-variant-numeric:tabular-nums}
+th,td{padding:11px 12px;border-bottom:1px solid var(--line);text-align:right;white-space:nowrap}
+th:first-child,td:first-child{text-align:left;white-space:normal}
+thead th{background:#f2f5f9;color:#40516a;font-weight:750}
+tbody tr:last-child td{border-bottom:0}
+.up{color:#16794a;font-weight:750}.down{color:#a34a35;font-weight:750}
+.callout{border-left:3px solid var(--blue);background:#f4f7fc;padding:14px 17px;margin:18px 0;border-radius:0 8px 8px 0;font-size:13px;line-height:1.75;word-break:keep-all}
+.kpi-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.kpi{padding:16px;border-radius:10px;background:#f5f7fa;border:1px solid #e8edf3}
+.kpi strong{display:block;color:var(--navy);margin-bottom:6px}
+.kpi p{font-size:12px;margin:0}
+.steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:26px 0}
+.step{position:relative;padding:18px 14px;border:1px solid var(--line);border-radius:12px;background:#fff;min-width:0}
+.step .stepno{font-size:10px;font-weight:800;color:var(--blue);letter-spacing:.1em}
+.step .time{font-size:11px;color:#788497;margin:5px 0 12px}
+.step h3{font-size:14px}
+.step p{font-size:12px;line-height:1.65;margin:0}
+.step:not(:last-child):after{content:"";position:absolute;right:-10px;top:28px;width:10px;height:2px;background:#8eaddb}
+.brand-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px;margin:22px 0}
+.brand-item{padding:18px;border:1px solid var(--line);border-radius:12px;display:flex;gap:13px;align-items:flex-start}
+.brand-icon{width:36px;height:36px;border-radius:10px;background:#eaf1fb;color:#2458a6;display:grid;place-items:center;flex-shrink:0;font-weight:800}
+.brand-item p{font-size:12px;line-height:1.7;margin:0}
+.footer{position:absolute;bottom:22px;left:clamp(24px,6vw,78px);right:clamp(24px,6vw,78px);display:flex;align-items:center;justify-content:space-between;gap:14px;border-top:1px solid #edf0f4;padding-top:10px;font-size:10px;color:#98a2b0}
+.controls{height:60px;display:flex;align-items:center;justify-content:center;gap:16px;position:relative;z-index:5}
+.navbtn{width:38px;height:38px;border:1px solid #d5deea;border-radius:50%;background:#fff;color:var(--navy);display:grid;place-items:center;cursor:pointer;transition:.2s}
+.navbtn:hover{background:var(--navy);color:#fff;border-color:var(--navy)}
+.navbtn:disabled{opacity:.35;cursor:not-allowed}
+.progress{width:min(180px,25vw);height:4px;background:#dce3ed;border-radius:99px;overflow:hidden}
+.progress span{height:100%;display:block;background:var(--blue);width:10%;transition:width .35s}
+.counter{font-size:12px;color:#6b7788;min-width:52px;text-align:center;font-variant-numeric:tabular-nums}
+.hint{position:absolute;right:clamp(16px,4vw,54px);font-size:11px;color:#8a95a5}
+@media(max-width:700px){
+ body{overflow:hidden}.topbar{height:54px}.brand-mini img{width:105px}.top-right{display:none}
+ .stage{height:calc(100dvh - 112px);padding:10px}
+ .book{height:100%;width:100%}.page{padding:22px 20px 62px;border-radius:5px 10px 10px 5px}
+ .page-head{margin-bottom:24px}.page-head img{width:112px}.page-kicker{font-size:9px}
+ h1{font-size:35px}h2{font-size:25px}.lead{font-size:15px}
+ .cards{grid-template-columns:1fr;gap:8px}.card{padding:12px}.card .num{font-size:21px;margin:4px 0}
+ .two-col,.brand-grid{grid-template-columns:1fr;gap:10px}.panel{padding:14px}
+ .steps{grid-template-columns:1fr 1fr;gap:8px}.step{padding:12px}.step:not(:last-child):after{display:none}
+ .kpi-list{grid-template-columns:1fr}.footer{bottom:16px}
+ table{font-size:10px}th,td{padding:8px 5px}
+ .hint{display:none}.cover-graphic{width:35%;height:20%;right:5%;bottom:10%;opacity:.45}
+}
+@media(prefers-reduced-motion:reduce){.page,.progress span,.navbtn{transition:none}}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="brand-mini"><img src="assets/linkprice-logo.png" alt="LinkPrice 로고"><span>PERFORMANCE &amp; BRAND GROWTH</span></div>
+  <div class="top-right">맑은농장 맞춤 제안서 · LINKPRICE</div>
+</header>
+<main class="stage">
+<div class="book" id="book" aria-live="polite">
+<section class="page active" data-title="표지">
+  <div class="page-head"><img src="assets/linkprice-logo.png" alt="LinkPrice 로고"><span class="page-kicker">PROPOSAL · 2026</span></div>
+  <div class="cover">
+    <div class="eyebrow">NAVER PERFORMANCE MARKETING</div>
+    <div class="rule"></div>
+    <h1>맑은농장<br>네이버 광고 운영<br><span>및 브랜드 성장 제안</span></h1>
+    <p class="lead">구매 데이터를 기반으로 광고 효율을 개선하고,<br>지속 가능한 매출 성장과 브랜드 경쟁력을 준비합니다.</p>
+    <div class="cover-meta"><span>SA · 검색광고</span><span>GFA · 디스플레이</span><span>Brand Growth Roadmap</span></div>
+  </div>
+  <svg class="cover-graphic" viewBox="0 0 300 240" fill="none" aria-hidden="true"><circle cx="150" cy="120" r="93" stroke="#dce7f7" stroke-width="1.5"/><circle cx="150" cy="120" r="65" stroke="#dce7f7" stroke-width="1.5"/><path d="M34 180L103 130L151 146L218 66L268 89" stroke="#2e68c7" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="34" cy="180" r="8" fill="#b7192c"/><circle cx="103" cy="130" r="7" fill="#2e68c7"/><circle cx="151" cy="146" r="7" fill="#2e68c7"/><circle cx="218" cy="66" r="7" fill="#2e68c7"/><circle cx="268" cy="89" r="8" fill="#b7192c"/></svg>
+  <div class="footer"><span>LINKPRICE · 맑은농장 광고 운영 제안</span><span>01 / 12</span></div>
+</section>
+<section class="page" data-title="제안 방향">
+  <div class="page-head"><img src="assets/linkprice-logo.png" alt="LinkPrice 로고"><span class="page-kicker">01 / STRATEGY</span></div>
+  <div class="rule"></div><h2>단순 집행을 넘어,<br>데이터 기반 성장으로</h2>
+  <p class="lead">광고비 소진보다 중요한 것은 어떤 고객이 유입되고, 실제 구매로 얼마나 연결되는지 확인하는 것입니다.</p>
+  <div class="cards">
+    <div class="card"><span class="pill">01 · 진단</span><div class="num">정확하게</div><h3>현황과 원인 파악</h3><p>키워드·입찰·소재·전환 추적을 점검해 개선 우선순위를 설정합니다.</p></div>
+    <div class="card"><span class="pill">02 · 개선</span><div class="num">효율적으로</div><h3>구매 중심 최적화</h3><p>구매완료 매출, 전환율, CPA와 ROAS를 기준으로 운영을 조정합니다.</p></div>
+    <div class="card"><span class="pill">03 · 확장</span><div class="num">지속적으로</div><h3>성과 기반 성장</h3><p>효율이 검증된 상품과 광고 영역부터 예산 확대를 검토합니다.</p></div>
+  </div>
+  <div class="callout"><strong>운영 원칙</strong> · 매출과 ROAS를 함께 확인하고, 상품 마진과 구매 건수까지 고려해 광고비 확대 여부를 판단합니다.</div>
+  <div class="footer"><span>LINKPRICE · 광고 운영 방향</span><span>02 / 12</span></div>
+</section>
+<section class="page" data-title="레퍼런스 요약">
+  <div class="page-head"><img src="assets/linkprice-logo.png" alt="LinkPrice 로고"><span class="page-kicker">02 / CASE STUDY</span></div>
+  <div class="rule"></div><h2>운영 전후 성과 레퍼런스</h2>
+  <p>건강식품 카테고리 브랜드의 네이버 SA·GFA 운영 전후 제공 데이터를 기준으로, 광고비뿐 아니라 구매완료 성과와 효율 지표를 함께 비교했습니다.</p>
+  <div class="cards">
+    <div class="card"><span class="muted">구매전환매출</span><div class="num">+49.9%</div><p>SA + GFA 합산<br>약 4.71억 → 7.06억 원</p></div>
+    <div class="card"><span class="muted">구매완료 전환수</span><div class="num">+34.8%</div><p>4,866건 → 6,558건</p></div>
+    <div class="card"><span class="muted">합산 ROAS</span><div class="num">457% → 567%</div><p>약 110%p 상승</p></div>
+  </div>
+  <div class="two-col">
+    <div class="panel blue"><h3>검색광고 · SA</h3><p><strong>노출은 줄고 구매 성과는 개선</strong></p><p>노출수 -24.7%, 클릭수 +11.1%, 구매전환매출 +47.6%.</p><p>CTR 0.98% → 1.44%, CPA 약 9.9% 감소.</p></div>
+    <div class="panel"><h3>디스플레이 · GFA</h3><p><strong>도달 확대와 전환 효율 개선</strong></p><p>노출수 +109.4%, 구매완료 전환수 +69.4%, 구매전환매출 +93.9%.</p><p>구매 전환율 3.89% → 6.44%, CPA 약 2.9% 감소.</p></div>
+  </div>
+  <p class="small">※ 건강식품 브랜드의 운영 전후 데이터이며 맑은농장 실적이 아닙니다. 비교 기간과 전환 기여 기간 등 세부 조건 확인이 필요합니다.</p>
+  <div class="footer"><span>LINKPRICE · 성과 레퍼런스</span><span>03 / 12</span></div>
+</section>
+<section class="page" data-title="SA 상세">
+  <div class="page-head"><img src="assets/linkprice-logo.png" alt="LinkPrice 로고"><span class="page-kicker">03 / SEARCH ADS</span></div>
+  <div class="rule"></div><h2>SA · 구매 의도 중심의 효율 개선</h2>
+  <p>제공된 운영 전후 데이터에서는 노출 규모가 감소했음에도 클릭과 구매완료 성과가 증가했습니다. 실제 키워드 조정 내역과 함께 제시하면 운영 개선 방향을 더 명확히 설명할 수 있습니다.</p>
+  <table><thead><tr><th>지표</th><th>대행 전</th><th>대행 후</th><th>변화</th></tr></thead><tbody>
+  <tr><td>노출수</td><td>5,953,979</td><td>4,480,698</td><td class="down">-24.7%</td></tr>
+  <tr><td>클릭수</td><td>58,116</td><td>64,593</td><td class="up">+11.1%</td></tr>
+  <tr><td>CTR</td><td>0.98%</td><td>1.44%</td><td class="up">+0.47%p</td></tr>
+  <tr><td>총비용</td><td>101,087,049원</td><td>121,205,431원</td><td>+19.9%</td></tr>
+  <tr><td>구매완료 전환수</td><td>4,644건</td><td>6,182건</td><td class="up">+33.1%</td></tr>
+  <tr><td>구매 전환율</td><td>7.99%</td><td>9.57%</td><td class="up">+1.58%p</td></tr>
+  <tr><td>구매전환매출</td><td>448,141,260원</td><td>661,417,380원</td><td class="up">+47.6%</td></tr>
+  <tr><td>구매완료 ROAS</td><td>443.32%</td><td>545.70%</td><td class="up">+102.4%p</td></tr>
+  <tr><td>CPA</td><td>약 21,767원</td><td>약 19,606원</td><td class="up">-9.9%</td></tr>
+  </tbody></table>
+  <div class="callout">클릭 대비 구매 전환율과 구매 1건당 매출이 함께 개선됐습니다. 광고비 증액 여부는 키워드별 수익성과 상품 마진을 확인해 판단합니다.</div>
+  <div class="footer"><span>LINKPRICE · 검색광고 레퍼런스</span><span>04 / 12</span></div>
+</section>
+<section class="page" data-title="GFA 상세">
+  <div class="page-head"><img src="assets/linkprice-logo.png" alt="LinkPrice 로고"><span class="page-kicker">04 / DISPLAY ADS</span></div>
+  <div class="rule"></div><h2>GFA · 도달 확대와 구매 전환 개선</h2>
+  <p>GFA는 노출 범위를 넓히는 과정에서 CTR과 CPC가 변동할 수 있습니다. 따라서 도달 지표만 보지 않고 구매완료 전환수, CPA, 구매전환매출을 함께 평가합니다.</p>
+  <table><thead><tr><th>지표</th><th>대행 전</th><th>대행 후</th><th>변화</th></tr></thead><tbody>
+  <tr><td>노출수</td><td>540,147</td><td>1,130,929</td><td class="up">+109.4%</td></tr>
+  <tr><td>클릭수</td><td>5,704</td><td>5,838</td><td class="up">+2.3%</td></tr>
+  <tr><td>CTR</td><td>1.06%</td><td>0.52%</td><td class="down">-0.54%p</td></tr>
+  <tr><td>총비용</td><td>2,004,306원</td><td>3,294,989원</td><td>+64.4%</td></tr>
+  <tr><td>구매완료 전환수</td><td>222건</td><td>376건</td><td class="up">+69.4%</td></tr>
+  <tr><td>구매 전환율</td><td>3.89%</td><td>6.44%</td><td class="up">+2.55%p</td></tr>
+  <tr><td>구매전환매출</td><td>23,187,560원</td><td>44,973,550원</td><td class="up">+93.9%</td></tr>
+  <tr><td>구매완료 ROAS</td><td>1,156.89%</td><td>1,364.91%</td><td class="up">+208.0%p</td></tr>
+  <tr><td>CPA</td><td>약 9,028원</td><td>약 8,763원</td><td class="up">-2.9%</td></tr>
+  </tbody></table>
+  <p class="small">GFA의 광고비 규모는 SA보다 작아 지표 변동 폭이 커질 수 있습니다. CTR 하락과 CPC 상승도 함께 공개해 균형 있게 해석합니다.</p>
+  <div class="footer"><span>LINKPRICE · GFA 레퍼런스</span><span>05 / 12</span></div>
+</section>
+<section class="page" data-title="통합 성과">
+  <div class="page-head"><img src="assets/linkprice-logo.png" alt="LinkPrice 로고"><span class="page-kicker">05 / TOTAL PERFORMANCE</span></div>
+  <div class="rule"></div><h2>비용 증가보다 중요한 것은<br>매출과 효율의 동반 개선</h2>
+  <p>SA와 GFA의 합산 데이터를 통해 광고비 변화와 구매 성과를 함께 살펴봅니다.</p>
+  <table><thead><tr><th>합산 지표</th><th>대행 전</th><th>대행 후</th><th>변화</th></tr></thead><tbody>
+  <tr><td>총비용</td><td>약 1.03억 원</td><td>약 1.25억 원</td><td>+20.8%</td></tr>
+  <tr><td>구매전환매출</td><td>약 4.71억 원</td><td>약 7.06억 원</td><td class="up">+49.9%</td></tr>
+  <tr><td>구매완료 전환수</td><td>4,866건</td><td>6,558건</td><td class="up">+34.8%</td></tr>
+  <tr><td>합산 ROAS</td><td>약 457%</td><td>약 567%</td><td class="up">+110%p</td></tr>
+  </tbody></table>
+  <div class="cards">
+    <div class="card"><span class="muted">광고비 변화</span><div class="num">+20.8%</div><p>비용 규모 확대</p></div>
+    <div class="card"><span class="muted">매출 변화</span><div class="num">+49.9%</div><p>비용 증가 폭을 웃도는 매출 증가</p></div>
+    <div class="card"><span class="muted">전환 변화</span><div class="num">+34.8%</div><p>구매완료 전환수 증가</p></div>
+  </div>
+  <p class="small">산출 조건과 비교 기간을 확인한 뒤 최종 공개합니다. 브랜드스토어 전환만의 효과로 단정하지 않습니다.</p>
+  <div class="footer"><span>LINKPRICE · 통합 성과</span><span>06 / 12</span></div>
+</section>
+<section class="page" data-title="맑은농장 전략">
+  <div class="page-head"><img src="assets/linkprice-logo.png" alt="LinkPrice 로고"><span class="page-kicker">06 / CUSTOM PLAN</span></div>
+  <div class="rule"></div><h2>맑은농장 맞춤형 운영 전략</h2>
+  <p>초기에는 현재 광고 데이터와 상품별 수익 구조를 확인하고, 검증된 개선 항목부터 단계적으로 적용합니다.</p>
+  <div class="kpi-list">
+    <div class="kpi"><strong>검색광고 구조 정비</strong><p>구매 의도가 높은 검색어를 중심으로 키워드와 입찰을 점검하고, 비효율 검색어와 비용을 관리합니다.</p></div>
+    <div class="kpi"><strong>소재 개선 및 테스트</strong><p>상품별 핵심 강점과 시즌 수요를 반영해 소재를 기획하고 반응 데이터를 기반으로 개선합니다.</p></div>
+    <div class="kpi"><strong>SA·GFA 역할 분담</strong><p>검색 수요 포착과 디스플레이 도달 확대의 역할을 구분하고, 전환 성과를 기준으로 예산을 조정합니다.</p></div>
+    <div class="kpi"><strong>수익성 중심의 예산 운영</strong><p>ROAS뿐 아니라 구매 건수, CPA, 객단가와 상품 마진을 함께 검토해 증액 여부를 판단합니다.</p></div>
+  </div>
+  <div class="callout"><strong>운영 차별점</strong> · 광고비 외 별도 대행수수료 없이 운영하며, 내부 전문 디자인팀을 활용해 소재 제작과 개선을 지원합니다.</div>
+  <div class="footer"><span>LINKPRICE · 맑은농장 맞춤 전략</span><span>07 / 12</span></div>
+</section>
+<section class="page" data-title="네이버 퀵윈 프로모션">
+  <div class="page-head"><img src="assets/linkprice-logo.png" alt="LinkPrice 로고"><span class="page-kicker">08 / NAVER QUICK WIN</span></div>
+  <div class="rule"></div><h2>네이버 퀵윈 프로모션</h2>
+  <p class="lead">DA 광고를 일정 수준 이상 운영하는 광고주를 대상으로, 전환 성과 개선 또는 브랜드 노출 확대를 지원하는 프로모션입니다.</p>
+  <div class="two-col">
+    <div class="panel blue"><span class="pill">TYPE 01 · 전환 목적</span><h3 style="margin-top:14px">스토어 리워드 쿠폰 지원</h3><div class="num" style="font-size:30px;color:#2e68c7;font-weight:800">1,000만원 → 약 200만원</div><p>DA 광고비 1,000만원 운영 기준으로 스토어 리워드 쿠폰 지원을 검토할 수 있습니다.</p><p class="small">YOY 조건 및 세부 지원 기준 충족 여부 확인 필요</p></div>
+    <div class="panel"><span class="pill">TYPE 02 · 노출 목적</span><h3 style="margin-top:14px">추가 노출 구좌 지원</h3><div class="num" style="font-size:26px;color:#2e68c7;font-weight:800">스마트채널 · 브랜딩 DA</div><p>브랜드 인지도와 도달 확대가 목적일 경우, 추가 노출 지면 지원 대상 여부를 검토합니다.</p><p class="small">YOY 조건 및 구좌 운영 가능 여부 확인 필요</p></div>
+  </div>
+  <div class="callout"><strong>신청 일정</strong> · 일반적으로 매월 마지막 주 신청 후 다음 달 초 결과 안내를 받는 방식으로 운영됩니다. 신청 일정과 지원 조건은 해당 월 네이버 안내를 기준으로 최종 확인합니다.</div>
+  <h3>맑은농장에 제안하는 활용 방향</h3>
+  <p>현재 DA 운영 규모와 목표를 확인한 뒤, 구매 전환을 우선할지 브랜드 노출을 확대할지 목적을 먼저 정하고 적합한 유형으로 신청을 검토합니다.</p>
+  <div class="footer"><span>LINKPRICE · 네이버 퀵윈 프로모션</span><span>08 / 12</span></div>
+</section>
+<section class="page" data-title="퀵윈 기대효과">
+  <div class="page-head"><img src="assets/linkprice-logo.png" alt="LinkPrice 로고"><span class="page-kicker">09 / QUICK WIN BENEFITS</span></div>
+  <div class="rule"></div><h2>퀵윈 활용에 따른 광고주 기대효과</h2>
+  <p>프로모션 혜택만 안내하는 것이 아니라, 네이버의 지원과 광고 운영 전략을 연결해 성장 기회를 넓히는 방향으로 제안합니다.</p>
+  <div class="brand-grid">
+    <div class="brand-item"><div class="brand-icon">01</div><div><h3>퀵윈 파트너사 성공사례</h3><p>유사 업종 및 운영 목표에 맞는 파트너사 사례 자료를 공유해 적용 가능한 방향과 참고 지표를 설명합니다.</p></div></div>
+    <div class="brand-item"><div class="brand-icon">02</div><div><h3>브랜드스토어 전환 검토</h3><p>브랜드 경쟁력, 상표권 및 운영 데이터를 점검하고 브랜드스토어 전환 가능성을 중장기 과제로 검토합니다.</p></div></div>
+    <div class="brand-item"><div class="brand-icon">03</div><div><h3>네이버 직접 컨설팅</h3><p>프로그램 대상 및 지원 범위에 따라 네이버 컨설팅 기회를 활용하고, 업종 데이터와 벤치마킹 관점에서 개선 과제를 확인합니다.</p></div></div>
+    <div class="brand-item"><div class="brand-icon">04</div><div><h3>GFA 고객 여정·재타겟팅</h3><p>신규 고객 유입부터 관심 고객 재접점, 구매 유도까지 고객 여정을 설계합니다. 계정에서 활용 가능한 타겟과 CRM 기능은 별도 확인합니다.</p></div></div>
+  </div>
+  <div class="callout"><strong>GFA 운영 포인트</strong> · 스마트스토어 기본 통계만으로는 광고 플랫폼의 모든 고객 행동과 타겟 활용이 동일하게 제공되지 않을 수 있습니다. GFA에서 실제 사용 가능한 타겟 조건과 연동 범위를 확인한 뒤 재타겟팅 전략을 설계합니다.</div>
+  <p class="small">지원 금액·구좌·컨설팅 제공 여부는 신청 시점의 프로모션 공지, YOY 조건, 광고주 계정 및 네이버 심사 결과에 따라 달라질 수 있습니다. 혜택을 확정적으로 보장하는 표현은 사용하지 않습니다.</p>
+  <div class="footer"><span>LINKPRICE · 퀵윈 활용 전략</span><span>09 / 12</span></div>
+</section>
+<section class="page" data-title="기대효과">
+  <div class="page-head"><img src="assets/linkprice-logo.png" alt="LinkPrice 로고"><span class="page-kicker">07 / KPI ROADMAP</span></div>
+  <div class="rule"></div><h2>단계별 기대효과 및 KPI</h2>
+  <p>초기 데이터를 확인한 뒤 현실적인 목표를 설정하고, 개선 결과에 따라 다음 단계로 진행합니다.</p>
+  <div class="steps">
+    <div class="step"><div class="stepno">STEP 01</div><div class="time">1~2개월</div><h3>진단·정비</h3><p>키워드, 입찰, 소재와 전환 추적 점검</p><p><strong>지표</strong> CTR · CPC · 검색어 비용</p></div>
+    <div class="step"><div class="stepno">STEP 02</div><div class="time">3~4개월</div><h3>성과 검증</h3><p>소재와 상품별 전환 성과 비교</p><p><strong>지표</strong> 전환율 · CPA</p></div>
+    <div class="step"><div class="stepno">STEP 03</div><div class="time">5~6개월</div><h3>확장 검토</h3><p>효율이 검증된 영역에 예산 확대</p><p><strong>지표</strong> 매출 · ROAS</p></div>
+    <div class="step"><div class="stepno">STEP 04</div><div class="time">중장기</div><h3>브랜드 성장</h3><p>브랜드 자산과 재구매 기반 관리</p><p><strong>지표</strong> 검색량 · 리뷰 · 재구매</p></div>
+  </div>
+  <div class="callout">위 단계는 운영 계획 예시이며, 맑은농장의 실제 데이터와 시즌·프로모션 상황에 따라 조정합니다. 성과 수치는 보장값이 아닌 관리 목표로 설정합니다.</div>
+  <div class="footer"><span>LINKPRICE · 단계별 운영 계획</span><span>10 / 12</span></div>
+</section>
+<section class="page" data-title="브랜드스토어 전략">
+  <div class="page-head"><img src="assets/linkprice-logo.png" alt="LinkPrice 로고"><span class="page-kicker">08 / BRAND STORE</span></div>
+  <div class="rule"></div><h2>광고 성과와 분리해 준비하는<br>브랜드스토어 성장 전략</h2>
+  <p class="lead">브랜드스토어는 단기 광고 성과와 별개로, 브랜드 경쟁력과 고객 신뢰를 축적해 중장기적으로 검토할 성장 과제입니다.</p>
+  <div class="brand-grid">
+    <div class="brand-item"><div class="brand-icon">01</div><div><h3>성과 데이터 축적</h3><p>대표 상품 매출, 구매 전환율, 리뷰와 재구매 관련 지표를 정리해 브랜드 성장 근거를 확보합니다.</p></div></div>
+    <div class="brand-item"><div class="brand-icon">02</div><div><h3>브랜드 경쟁력 강화</h3><p>브랜드명, 로고, 패키지, 상세페이지 톤앤매너와 스토어 소개를 일관되게 관리합니다.</p></div></div>
+    <div class="brand-item"><div class="brand-icon">03</div><div><h3>행사 및 프로모션 이력</h3><p>참여 가능한 네이버 기획전을 검토하고 행사별 매출과 고객 반응을 기록합니다.</p></div></div>
+    <div class="brand-item"><div class="brand-icon">04</div><div><h3>전환 요건 사전 검토</h3><p>상표권·브랜드 권리 자료, 브랜드 소개, 대표 상품과 향후 운영 계획을 준비하고 공식 요건을 확인합니다.</p></div></div>
+  </div>
+  <div class="callout"><strong>중요</strong> · 브랜드스토어 전환은 네이버의 심사와 정책에 따라 결정됩니다. 사전 준비는 전환 가능성을 검토하기 위한 과정이며 입점을 보장하지 않습니다.</div>
+  <div class="footer"><span>LINKPRICE · 별도 브랜드 성장 전략</span><span>11 / 12</span></div>
+</section>
+<section class="page" data-title="마무리">
+  <div class="page-head"><img src="assets/linkprice-logo.png" alt="LinkPrice 로고"><span class="page-kicker">12 / NEXT STEP</span></div>
+  <div class="cover">
+    <div class="eyebrow">LET'S GROW TOGETHER</div><div class="rule"></div>
+    <h2 style="font-size:clamp(30px,4vw,48px)">성과를 점검하고,<br>다음 성장을 설계합니다.</h2>
+    <p class="lead">링크프라이스는 단기적인 광고 지표 개선에 그치지 않고, 구매 데이터를 기반으로 효율을 검증하며 지속적인 매출 성장을 지원합니다.</p>
+    <p class="lead">맑은농장의 상품 경쟁력과 브랜드 가치를 함께 강화하고, 장기적인 브랜드 성장 가능성까지 단계적으로 준비하겠습니다.</p>
+    <div class="callout"><strong>LINKPRICE</strong><br>네이버 광고 운영 · 성과 분석 · 소재 개선 · 브랜드 성장 전략</div>
+  </div>
+  <div class="footer"><span>LINKPRICE · 맑은농장 광고 운영 제안</span><span>12 / 12</span></div>
+</section>
+</div>
+</main>
+<nav class="controls" aria-label="페이지 이동">
+  <button class="navbtn" id="prev" aria-label="이전 페이지" title="이전 페이지">←</button>
+  <span class="counter" id="counter">01 / 12</span>
+  <div class="progress" aria-hidden="true"><span id="progress"></span></div>
+  <button class="navbtn" id="next" aria-label="다음 페이지" title="다음 페이지">→</button>
+  <span class="hint">← → 키로 페이지 이동</span>
+</nav>
+<script>
+(()=> {
+ const pages=[...document.querySelectorAll('.page')], prev=document.getElementById('prev'), next=document.getElementById('next'), counter=document.getElementById('counter'), progress=document.getElementById('progress');
+ let index=0,busy=false;
+ function show(nextIndex){
+   if(busy||nextIndex===index||nextIndex<0||nextIndex>=pages.length)return;
+   busy=true; const old=pages[index], target=pages[nextIndex], forward=nextIndex>index;
+   old.classList.remove('active'); old.classList.add(forward?'exit-left':'enter-right');
+   target.classList.remove('exit-left','enter-right'); target.classList.add('active');
+   index=nextIndex; update();
+   window.setTimeout(()=>{old.classList.remove('exit-left','enter-right');busy=false},780);
+ }
+ function update(){counter.textContent=String(index+1).padStart(2,'0')+' / '+String(pages.length).padStart(2,'0');progress.style.width=((index+1)/pages.length*100)+'%';prev.disabled=index===0;next.disabled=index===pages.length-1;document.title=pages[index].dataset.title+' | 맑은농장 제안서';}
+ prev.addEventListener('click',()=>show(index-1));next.addEventListener('click',()=>show(index+1));
+ document.addEventListener('keydown',e=>{if(['ArrowRight','PageDown',' '].includes(e.key)){e.preventDefault();show(index+1)}if(['ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();show(index-1)}});
+ let startX=null;const book=document.getElementById('book');
+ book.addEventListener('touchstart',e=>{startX=e.changedTouches[0].clientX},{passive:true});
+ book.addEventListener('touchend',e=>{if(startX===null)return;const dx=e.changedTouches[0].clientX-startX;if(Math.abs(dx)>55)show(index+(dx<0?1:-1));startX=null},{passive:true});
+ update();
+})();
+</script>
+</body>
+</html>
